@@ -1,0 +1,11 @@
+# Enable mod_rewrite
+RewriteEngine On
+
+# Allow access to .eml and .ics files
+RewriteCond %{REQUEST_URI} !^/emails/
+RewriteCond %{REQUEST_URI} !^/calendar/
+
+# Rewrite all requests to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L]
